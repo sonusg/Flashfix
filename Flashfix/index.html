@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>FlashFix Home - Emergency Repair Services</title>
+    <meta charset="UTF-8">
+    <script src="app.js" type="module" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">FlashFix</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="auth.html">Request Help</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="techauth.html">Technician Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero-section">
+        <div class="container hero-content">
+            <h1>FlashFix – Emergency Repair</h1>
+            <h2>Your Fix is Just One Tap Away!</h2>
+            <p class="lead-text">
+                "Step into the future with an app that redefines convenience and connectivity. We've crafted a seamless experience that adapts to your needs. Prepare to discover a smarter, more integrated way to live and work"
+            </p>
+
+            <div class="button-group">
+                <button class="btn hero-btn-primary" onclick="window.location.href='auth.html'">Request Help</button>
+                <button class="btn hero-btn-secondary" onclick="window.location.href='techauth.html'">Technician Login</button>
+            </div>
+        </div>
+    </div>
+
+    <section class="service-categories">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="row text-center service-grid">
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="service-card">
+                        <i class="fa-solid fa-fan fa-3x service-icon-fa"></i>
+                        <h3>AC Service & Repair</h3>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="service-card">
+                        <i class="fa-solid fa-shower fa-3x service-icon-fa"></i>
+                        <h3>Plumbing & Leakage</h3>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="service-card">
+                        <i class="fa-solid fa-plug-circle-bolt fa-3x service-icon-fa"></i>
+                        <h3>Electrical Faults</h3>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="service-card">
+                        <i class="fa-solid fa-tint fa-3x service-icon-fa"></i>
+                        <h3>Water Purifier (RO) Service</h3>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="service-card">
+                        <i class="fa-solid fa-temperature-low fa-3x service-icon-fa"></i>
+                        <h3>Refrigerator Repair</h3>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="service-card">
+                        <i class="fa-solid fa-shield-virus fa-3x service-icon-fa"></i>
+                        <h3>Pest Control</h3>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="service-card">
+                        <i class="fa-solid fa-soap fa-3x service-icon-fa"></i>
+                        <h3>Washing Machine Repair</h3>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="service-card">
+                        <i class="fa-solid fa-spray-can-sparkles fa-3x service-icon-fa"></i>
+                        <h3>Deep Cleaning Services</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <a href="auth.html" class="btn btn-primary btn-lg">View All Services</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <i class="fa-solid fa-file-invoice fa-5x icon-img-fa"></i>
+                    <h3>1. Submit Request</h3>
+                    <p>Tell us your issue and pinpoint your location. Add photos for clarity.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fa-solid fa-handshake fa-5x icon-img-fa"></i>
+                    <h3>2. Technician Accepts</h3>
+                    <p>Nearby technicians view your request and accept the job.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fa-solid fa-tools fa-5x icon-img-fa"></i>
+                    <h3>3. Get Fixed</h3>
+                    <p>Your assigned technician will contact you and resolve the problem.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-us-section py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <img src="2isssue.jpg" class="img-fluid rounded shadow-sm mb-4 mb-md-0" alt="About FlashFix">
+                </div>
+                <div class="col-md-6">
+                    <h2>About FlashFix</h2>
+                    <p class="lead">
+                        At FlashFix, we understand the urgency of home repairs. Our mission is to provide fast, reliable, and expert emergency repair services right to your doorstep. We connect you with certified technicians who are ready to tackle any household emergency, ensuring your peace of mind.
+                    </p>
+                    <p>
+                        Founded with the vision of simplifying home maintenance, FlashFix uses cutting-edge technology to streamline the repair process. From a leaky faucet to an electrical short, our network of skilled professionals is just a tap away, available 24/7.
+                    </p>
+                    <a href="#" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-choose-us-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Why Choose FlashFix?</h2>
+            <div class="row text-center">
+                <div class="col-md-4 mb-4">
+                    <div class="feature-card p-4 border rounded shadow-sm">
+                        <i class="fa-solid fa-bolt fa-4x text-primary mb-3"></i>
+                        <h3>Rapid Response</h3>
+                        <p>Get immediate assistance for your emergencies. Our technicians are dispatched quickly to your location.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-card p-4 border rounded shadow-sm">
+                        <i class="fa-solid fa-certificate fa-4x text-primary mb-3"></i>
+                        <h3>Certified Professionals</h3>
+                        <p>All our technicians are highly skilled, background-checked, and certified experts in their fields.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-card p-4 border rounded shadow-sm">
+                        <i class="fa-solid fa-hand-holding-dollar fa-4x text-primary mb-3"></i>
+                        <h3>Transparent Pricing</h3>
+                        <p>No hidden fees! We offer upfront pricing and detailed estimates before any work begins.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-section py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">What Our Customers Say</h2>
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="testimonial-card p-4 bg-white rounded shadow-sm mx-auto" style="max-width: 700px;">
+                            <p class="lead fst-italic">
+                                "FlashFix saved the day! My AC stopped working in the middle of a heatwave, and they had a technician at my door within an hour. Professional and efficient service!"
+                            </p>
+                            <p class="text-end fw-bold">- Darshan R, Bengaluru</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial-card p-4 bg-white rounded shadow-sm mx-auto" style="max-width: 700px;">
+                            <p class="lead fst-italic">
+                                "I had a burst pipe, and the FlashFix team was incredible. They arrived quickly, fixed the problem, and cleaned up everything. Highly recommend their plumbing services!"
+                            </p>
+                            <p class="text-end fw-bold">- Sandya K, Delhi</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial-card p-4 bg-white rounded shadow-sm mx-auto" style="max-width: 700px;">
+                            <p class="lead fst-italic">
+                                "Finding a reliable electrician used to be a nightmare, but FlashFix made it so easy. The technician was knowledgeable and fixed my electrical issue in no time. Fantastic service!"
+                            </p>
+                            <p class="text-end fw-bold">- Yuktha S, Mumbai</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="join-us-section py-5 text-white bg-primary">
+        <div class="container text-center">
+            <h2>Are You a Skilled Technician?</h2>
+            <p class="lead mb-4">Join the FlashFix network and connect with customers in need of your expertise. Enjoy flexible hours and competitive earnings.</p>
+            <a href="techauth.html" class="btn btn-light btn-lg">Become a FlashFix Technician</a>
+        </div>
+    </section>
+
+    <section class="faq-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Frequently Asked Questions</h2>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            How do I request a service?
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Simply click on the "Request Help" button, describe your issue, provide your location, and optionally upload photos. Our system will then connect you with a nearby available technician.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            What areas do you serve?
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            FlashFix currently operates in major cities across India, including Bengaluru, Delhi, Mumbai, Chennai, and Hyderabad. We are continuously expanding our service areas.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Are your technicians vetted?
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes, all FlashFix technicians undergo a rigorous screening process, including background checks, skill assessments, and continuous training to ensure high-quality service.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            What if I need emergency service outside of business hours?
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            FlashFix is designed for emergency repairs, meaning our service is available 24/7. Simply submit your request, and a technician will respond as soon as possible, day or night.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h5>FlashFix</h5>
+                    <p>Your ultimate solution for emergency home repairs, available 24/7.</p>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="auth.html" class="text-white text-decoration-none">Request Help</a></li>
+                        <li><a href="techauth.html" class="text-white text-decoration-none">Technician Login</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">About Us</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Connect With Us</h5>
+                    <a href="#" class="text-white me-3"><span class="visually-hidden">Facebook</span><i class="fab fa-facebook-f fa-lg" aria-hidden="true"></i></a>
+                    <a href="#" class="text-white me-3"><span class="visually-hidden">Twitter</span><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+                    <a href="#" class="text-white me-3"><span class="visually-hidden">Instagram</span><i class="fab fa-instagram fa-lg" aria-hidden="true"></i></a>
+                    <a href="#" class="text-white"><span class="visually-hidden">LinkedIn</span><i class="fab fa-linkedin-in fa-lg" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            <hr class="my-4 border-secondary">
+            <p class="mb-0">&copy; <span id="currentYear"></span> FlashFix. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

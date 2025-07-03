@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Your Requests - FlashFix</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="app.js" type="module" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" integrity="sha512-BwHfrr4c9kmRkLw6iXFdzcdWV/PGkVgiIyIWLLlTSXzWQzxuSg4DiQUCpauz/EWjgk5TYQqX/kvn9pG1NpYfqg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">FlashFix</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="request.html">Your Requests</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="techauth.html">Technician Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container request-page-container">
+        <h2 id="pageTitle">Submit New Request</h2>
+        <div id="userProfileDisplay" style="display: none;" class="container my-3 p-3 border rounded bg-light">
+            <p>Logged in as: <strong><span id="userDisplayName"></span></strong></p>
+            <p>Phone: <strong><span id="userDisplayPhone"></span></strong></p>
+        </div>
+        <p id="loggedInUserName" class="text-muted text-center" style="display:none;"></p>
+        <div id="authMessage" class="alert alert-warning" style="display:none;">
+            <p>Please log in to submit a request and view your active jobs.</p>
+            <button onclick="window.location.href='auth.html'" class="btn btn-primary">Login / Sign Up</button>
+        </div>
+
+        <form id="requestForm" style="display:none;">
+            <div class="mb-3">
+                <label for="issueType" class="form-label">Issue Type:</label>
+                <select id="issueType" name="issueType" class="form-select">
+                    <option value="ac_service">AC Service & Repair</option>
+                    <option value="plumbing">Plumbing & Leakage</option>
+                    <option value="electricity">Electrical Faults</option>
+                    <option value="ro_service">Water Purifier (RO) Service</option>
+                    <option value="refrigerator">Refrigerator Repair</option>
+                    <option value="pest_control">Pest Control</option>
+                    <option value="washing_machine">Washing Machine Repair</option>
+                    <option value="deep_cleaning">Deep Cleaning Services</option>
+                    <option value="geyser">Geyser / Water Heater Repair</option>
+                    <option value="wifi">WiFi & Internet Troubleshooting</option>
+                    <option value="carpentry">Carpentry (Locks, Doors & Furniture Assembly)</option>
+                    <option value="tv_mounting">TV Mounting & Installation</option>
+                    <option value="microwave_repair">Microwave Oven Repair</option>
+                    <option value="dishwasher_repair">Dishwasher Repair</option>
+                    <option value="cctv_installation">CCTV Installation & Repair</option>
+                    <option value="painting">Painting & Wall Repairs</option>
+                    <option value="flooring">Flooring & Tile Work</option>
+                    <option value="curtain_blind_installation">Curtain & Blind Installation</option>
+                    <option value="door_window_repair">Door & Window Repair</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="issueDescription" class="form-label">Describe the Issue (Optional):</label>
+                <textarea id="issueDescription" name="issueDescription" rows="3" class="form-control" placeholder="e.g., Leaky pipe under the sink, flickering lights..."></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="homeAddress" class="form-label">Your Street Address (Auto-filled by map):</label>
+                <input type="text" id="homeAddress" name="homeAddress" class="form-control" placeholder="Drag marker on map to get address" readonly required>
+                <small class="form-text text-muted">Drag the map marker to pinpoint your exact location.</small>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Pin Your Location:</label>
+                <div id="map" style="height: 300px; width: 100%; border-radius: 8px; margin-bottom: 15px;"></div>
+                <input type="hidden" id="latitude" name="latitude">
+                <input type="hidden" id="longitude" name="longitude">
+            </div>
+
+            <div class="mb-3">
+                <label for="issueImage" class="form-label">Upload a Photo (Optional):</label>
+                <input type="file" id="issueImage" name="issueImage" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-success">Submit Request</button>
+        </form>
+
+        <hr>
+
+        <div id="userRequestsList" class="mt-4">
+            <h3 class="text-center">Your Active and Past Requests</h3>
+            <p id="userRequestsMessage" class="text-center text-muted">Loading your requests...</p>
+
+        </div>
+
+        <button id="userLogoutButton" class="btn btn-danger mt-4" style="display:none;">Logout</button>
+        <p class="mt-3"><a href="index.html">Back to Home</a></p>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 FlashFix. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

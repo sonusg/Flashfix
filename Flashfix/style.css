@@ -1,0 +1,881 @@
+:root {
+    /* Color Palette */
+    --primary-blue: #0077FF; /* Main brand blue */
+    --dark-blue: #0A1C33;   /* Darker blue for text, footer */
+    --light-blue: #E6F0FF;  /* Very light blue for backgrounds/highlights */
+    --accent-pink: #FF4D6D; /* Accent color for CTAs, highlights */
+    --accent-pink-dark: #E63D5C; /* Darker accent for hover states */
+
+    /* Text Colors */
+    --text-dark: #333;      /* Main body text */
+    --text-medium: #666;    /* Secondary text */
+    --text-light: #999;     /* Light text, e.g., for disabled states */
+    --white: #FFF;          /* White for text on dark backgrounds */
+
+    /* Backgrounds & Borders */
+    --bg-light: #F8F9FA;    /* Light background for sections */
+    --border-light: #E0E0E0; /* Light borders */
+
+    /* Shadows */
+    --shadow-light: 0 2px 8px rgba(0,0,0,0.08);   /* Subtle shadow */
+    --shadow-medium: 0 4px 20px rgba(0,0,0,0.12); /* More prominent shadow */
+
+    /* Typography */
+    --font-main: 'Inter', 'Segoe UI', Arial, sans-serif;
+    --fw-regular: 400; /* Font weight regular */
+    --fw-medium: 500;   /* Font weight medium */
+    --fw-semibold: 600; /* Font weight semi-bold */
+    --fw-bold: 700;    /* Font weight bold */
+
+    /* Spacing (Modular Scale) */
+    --space-xs: 0.5rem; /* 8px */
+    --space-sm: 1rem;   /* 16px */
+    --space-md: 1.5rem; /* 24px */
+    --space-lg: 2rem;   /* 32px */
+    --space-xl: 3rem;   /* 48px */
+}
+
+/* --- Base Styles --- */
+html {
+    scroll-behavior: smooth;
+    box-sizing: border-box; /* Enables padding and border in element's total width/height */
+}
+*, *::before, *::after {
+    box-sizing: inherit; /* Inherit box-sizing for all elements */
+}
+
+body {
+    font-family: var(--font-main);
+    line-height: 1.6;
+    color: var(--text-dark);
+    background: var(--bg-light);
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased; /* Improve font rendering on macOS/iOS */
+    -moz-osx-font-smoothing: grayscale; /* Improve font rendering on Firefox macOS */
+    font-size: 1.05rem; /* Slightly increase base font size for better readability */
+}
+
+/* General Image Responsiveness */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Removes extra space below images */
+}
+
+/* Horizontal Rule Styling */
+hr {
+    border: none;
+    border-top: 1px solid var(--border-light);
+    margin: var(--space-xl) 0; /* More vertical space around HR */
+}
+
+/* Enhanced Focus States */
+:focus-visible {
+    outline: 3px solid var(--primary-blue);
+    outline-offset: 2px;
+    border-radius: 4px; /* Adjust as needed for elements like buttons */
+}
+
+/* Remove default outline for elements that have custom focus styles or are inherently clickable */
+button:focus:not(:focus-visible),
+a:focus:not(:focus-visible),
+input:focus:not(:focus-visible),
+select:focus:not(:focus-visible),
+textarea:focus:not(:focus-visible) {
+    outline: none;
+}
+
+
+/* --- Typography --- */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--dark-blue);
+    font-weight: var(--fw-bold);
+    margin-bottom: var(--space-sm);
+    line-height: 1.2;
+    margin-top: var(--space-lg); /* Add top margin for headings to separate from preceding content */
+}
+/* This targets the first heading in a parent, like <h2> in .container */
+h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+    margin-top: 0;
+}
+/* More specific rule for headings within certain sections if needed, e.g., inside .card */
+.card h1, .card h2, .card h3, .card h4, .card h5, .card h6 {
+    margin-top: 0; /* Headings inside cards shouldn't have top margin from parent */
+}
+
+
+h1 { font-size: 2.8rem; }
+h2 { font-size: 2.2rem; }
+h3 { font-size: 1.8rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.1rem; }
+h6 { font-size: 1rem; }
+
+p {
+    margin-bottom: var(--space-sm);
+    color: var(--text-medium);
+    line-height: 1.75; /* Increase line height for paragraphs for better readability */
+}
+
+ul, ol {
+    margin-bottom: var(--space-md); /* Consistent bottom margin for lists */
+    padding-left: var(--space-md); /* Indent list items */
+}
+
+li {
+    margin-bottom: var(--space-xs); /* Space between list items */
+}
+
+a {
+    color: var(--primary-blue);
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+a:hover {
+    color: var(--accent-pink);
+    text-decoration: underline;
+}
+
+strong {
+    font-weight: var(--fw-semibold);
+    color: var(--dark-blue);
+}
+
+/* --- Buttons --- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1.8rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: var(--fw-semibold);
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.2s ease-in-out; /* Smooth transitions for all properties */
+    text-align: center;
+    line-height: 1; /* Ensures consistent vertical alignment */
+    text-decoration: none; /* Remove underline by default */
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+/* Icon spacing within buttons */
+.btn i {
+    margin-right: 0.5rem; /* Space between icon and text */
+    vertical-align: middle; /* Align icon vertically with text */
+    font-size: 1em; /* Ensure icons scale with button font size */
+}
+.btn i:only-child {
+    margin-right: 0; /* No margin if the icon is the only child */
+}
+
+
+.btn-primary {
+    background: var(--primary-blue);
+    color: var(--white);
+    box-shadow: 0 4px 10px rgba(0,119,255,0.2);
+}
+.btn-primary:hover {
+    background: #0066E6; /* Slightly darker blue */
+    box-shadow: 0 6px 15px rgba(0,119,255,0.3);
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+.btn-accent {
+    background: var(--accent-pink);
+    color: var(--white);
+    box-shadow: 0 4px 10px rgba(255,77,109,0.2);
+}
+.btn-accent:hover {
+    background: var(--accent-pink-dark);
+    box-shadow: 0 6px 15px rgba(255,77,109,0.3);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--primary-blue);
+    border: 1px solid var(--primary-blue);
+}
+.btn-secondary:hover {
+    background: var(--light-blue);
+    color: var(--primary-blue);
+    transform: translateY(-2px);
+}
+
+.btn-light {
+    background: var(--white);
+    color: var(--text-medium);
+    border: 1px solid var(--border-light);
+}
+.btn-light:hover {
+    background: var(--bg-light);
+    color: var(--text-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+}
+
+.btn-danger {
+    background: #DC3545; /* Bootstrap red */
+    color: var(--white);
+    border: 1px solid #DC3545;
+}
+.btn-danger:hover {
+    background: #C82333; /* Darker red */
+    border-color: #C82333;
+    transform: translateY(-2px);
+}
+
+/* Button Sizes */
+.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    border-radius: 6px;
+}
+.btn-lg {
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    border-radius: 50px; /* Pill-shaped button */
+}
+
+
+/* --- Layout & Components --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto; /* Center the container */
+    padding: 0 var(--space-md); /* Add horizontal padding */
+}
+
+.card {
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow-light);
+    /* padding: var(--space-lg); REMOVED: Using .card-body for padding now */
+    margin-bottom: var(--space-lg);
+    transition: all 0.2s ease-in-out;
+}
+.card:hover {
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-3px);
+}
+
+/* Specific styling for the body content within a card */
+.card-body {
+    padding: var(--space-lg); /* Apply padding to the inner body of the card */
+}
+
+/* Card text within card body */
+.card-text {
+    margin-bottom: var(--space-xs); /* Reduce space between card text paragraphs */
+}
+.card-text:last-child {
+    margin-bottom: 0; /* No bottom margin on the last paragraph in a card-body */
+}
+
+
+.card-narrow {
+    max-width: 500px;
+    margin: auto; /* Centers the narrow card */
+    padding: var(--space-xl);
+}
+
+/* AUTH CONTAINER Specific Styling */
+.auth-container {
+    max-width: 500px; /* Make the auth forms narrower */
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-xl);
+    padding: var(--space-lg);
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow-light);
+}
+.auth-container h2 {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+    color: var(--dark-blue);
+}
+.auth-container .btn {
+    width: 100%; /* Make buttons full width */
+}
+
+
+/* --- Navbar --- */
+.navbar {
+    background: var(--white);
+    box-shadow: var(--shadow-light);
+    padding: var(--space-sm) var(--space-lg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky; /* Makes navbar stick to the top */
+    top: 0;
+    z-index: 1000; /* Ensures navbar is above other content */
+}
+.navbar-brand {
+    color: var(--primary-blue);
+    font-weight: var(--fw-bold);
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+.navbar-brand:hover {
+    color: var(--dark-blue);
+}
+.navbar-nav {
+    display: flex;
+    list-style: none; /* Remove bullet points */
+    margin: 0;
+    padding: 0;
+}
+.navbar-nav .nav-item {
+    margin-left: var(--space-md);
+}
+.navbar-nav .nav-link {
+    color: var(--text-dark);
+    font-weight: var(--fw-medium);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+}
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: var(--primary-blue);
+    background: var(--light-blue);
+    font-weight: var(--fw-semibold);
+}
+/* Bootstrap Toggle Button adjustments */
+.navbar-toggler {
+    border: none;
+    background: transparent;
+    padding: 0.5rem 0.75rem;
+    font-size: 1.25rem;
+    border-radius: 0.25rem;
+    outline: none;
+    transition: box-shadow 0.15s ease-in-out;
+}
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.25rem rgba(0,119,255,0.25); /* Focus ring */
+}
+
+
+/* --- Hero Section --- */
+.hero-section {
+    position: relative;
+    text-align: center;
+    padding: var(--space-xl) var(--space-md) var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Ensures content respects border-radius and keeps animations contained */
+
+    /* Make it full screen */
+    width: 100vw; /* Take full viewport width */
+    min-height: 100vh; /* Take full viewport height */
+    margin: 0; /* Remove auto margins to make it full screen */
+    border-radius: 0; /* Remove border-radius for full screen */
+    box-shadow: none; /* Remove shadow for full screen */
+
+    /* New: Multiple background layers for gradient and images */
+    background-image:
+        linear-gradient(135deg, rgba(0, 119, 255, 0.6) 0%, rgba(10, 28, 51, 0.8) 100%), /* Darker gradient overlay for better text contrast */
+        url('images/electrical-home-repair.jpg'), /* First image (will be on top of the second if both are visible) */
+        url('images/structural-problems.jpg'); /* Second image */
+
+    background-size: cover, cover, cover; /* Ensures all images cover the area */
+    background-position: center center, center center, center center; /* Center all backgrounds */
+    background-repeat: no-repeat, no-repeat, no-repeat; /* Do not repeat backgrounds */
+    background-attachment: fixed, fixed, fixed; /* Parallax effect for all backgrounds */
+
+    color: var(--white); /* Default text color for hero section */
+
+    /* Remove filter and transition directly on hero-section as pseudo-elements handle blur/animation */
+    filter: none;
+    transition: none;
+    animation: none;
+}
+
+/* Add a pseudo-element to hold the blurred background image,
+    so text/buttons remain sharp */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Apply both images here as well for the blurred effect */
+    background-image:
+        url('images/electrical-home-repair.jpg'),
+        url('images/structural-problems.jpg');
+    background-size: cover, cover;
+    background-position: center center, center center;
+    background-repeat: no-repeat, no-repeat;
+    background-attachment: fixed, fixed; /* Match parent for parallax */
+
+    filter: blur(8px); /* Increased blur for a smoother background */
+    z-index: -1; /* Place it behind the content */
+    transform: scale(1.05); /* Slightly scale to hide blur edges */
+    animation: heroBackgroundPan 60s linear infinite alternate; /* Subtle pan animation for displacement */
+}
+
+/* Ensure the gradient overlay is on top of the blurred image but behind text */
+.hero-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Darker gradient for overlay to ensure white text readability */
+    background: linear-gradient(135deg, rgba(0, 119, 255, 0.6) 0%, rgba(10, 28, 51, 0.8) 100%);
+    border-radius: 0; /* Remove border-radius */
+    z-index: -1; /* Place it behind the content but on top of the blurred image */
+}
+
+/* Ensure text on hero is readable */
+.hero-section h1,
+.hero-section h2,
+.hero-section p.lead-text {
+    color: var(--white); /* Changed to white for better contrast on potentially dark background images */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Add a subtle text shadow for readability */
+    position: relative; /* Ensure text is above pseudo-elements */
+    z-index: 1; /* Make sure text is on top */
+}
+/* Adjust lead text for slightly more impact */
+.hero-section p.lead-text {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.25rem; /* Make it a bit larger */
+    font-weight: var(--fw-medium);
+    margin-bottom: var(--space-xl); /* More space before buttons */
+}
+
+
+/* Hero section button specific styles (no changes needed from previous for now, as they are already good) */
+.hero-btn-primary {
+    background: var(--primary-blue);
+    color: var(--white);
+    border: 2px solid var(--primary-blue);
+    box-shadow: 0 4px 15px rgba(0, 119, 255, 0.4);
+}
+.hero-btn-primary:hover {
+    background: #005bb5; /* Darker blue on hover */
+    border-color: #005bb5;
+    box-shadow: 0 6px 20px rgba(0, 119, 255, 0.6);
+    transform: translateY(-3px);
+}
+.hero-btn-secondary {
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+    color: var(--white); /* Changed to white for better contrast on the new darker gradient */
+    border: 2px solid var(--white); /* Changed to white for better contrast */
+    backdrop-filter: blur(5px); /* Optional: Adds a cool blur effect behind text */
+    -webkit-backdrop-filter: blur(5px); /* For Safari */
+}
+.hero-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.4);
+    color: var(--white); /* Change text color on hover for better contrast */
+    border-color: var(--primary-blue); /* Changed border on hover to primary blue */
+    transform: translateY(-3px);
+}
+.hero-section .button-group {
+    display: flex;
+    gap: var(--space-md); /* Space between buttons */
+    margin-top: var(--space-lg);
+    position: relative; /* Ensure buttons are above pseudo-elements */
+    z-index: 1;
+    justify-content: center; /* Ensures buttons are centered */
+}
+
+/* Keyframe animation for subtle background pan (displacement effect) */
+@keyframes heroBackgroundPan {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+/* General Section Padding */
+section {
+    padding: 60px 0;
+}
+
+/* About Us Section */
+.about-us-section {
+    background-color: #f8f9fa; /* Light background */
+}
+
+.about-us-section img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Why Choose Us Section */
+.why-choose-us-section {
+    background-color: #ffffff; /* White background */
+}
+
+.why-choose-us-section .feature-card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.why-choose-us-section .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.why-choose-us-section .feature-card i {
+    color: #007bff; /* Primary color for icons */
+}
+
+/* Testimonials Section */
+.testimonials-section {
+    background-color: #f2f2f2; /* Slightly darker light background */
+}
+
+.testimonial-card {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+/* Join Us Section (Call to Action for Technicians) */
+.join-us-section {
+    background-color: #007bff; /* Bootstrap primary blue */
+    color: #fff;
+}
+
+/* FAQ Section */
+.faq-section {
+    background-color: #ffffff;
+}
+
+.faq-section .accordion-button:not(.collapsed) {
+    color: #007bff; /* Primary color for active accordion header */
+    background-color: #e9f5ff; /* Light primary background for active */
+    border-color: #007bff;
+}
+
+.faq-section .accordion-button {
+    font-weight: 600;
+}
+
+
+/* --- How It Works Section --- */
+.how-it-works {
+    padding: var(--space-xl) 0;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow-light);
+    margin-bottom: var(--space-xl);
+}
+.how-it-works h2 {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+    color: var(--dark-blue);
+}
+.how-it-works .step-item {
+    text-align: center;
+    padding: var(--space-sm);
+    margin-bottom: var(--space-lg); /* Add bottom margin for spacing on smaller screens */
+}
+/* Enhanced Icon Styling for Font Awesome Icons */
+.how-it-works .icon-img-fa {
+    font-size: 4.5rem; /* Make icons larger */
+    color: var(--primary-blue); /* Icon color - this will be overridden by gradient */
+    background: var(--light-blue); /* Light blue circular background */
+    border-radius: 50%; /* Makes it a perfect circle */
+    width: 120px; /* Larger circle width */
+    height: 120px; /* Larger circle height */
+    display: inline-flex; /* Centers the icon vertically and horizontally */
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-md);
+    box-shadow: 0 5px 15px rgba(0,119,255,0.15); /* More prominent shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
+
+    /* Gradient for How It Works Icons */
+    background-image: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent; /* Fallback for browsers that don't support text-fill-color */
+}
+.how-it-works .icon-img-fa:hover {
+    transform: translateY(-8px) scale(1.05); /* More noticeable lift and slight scale */
+    box-shadow: 0 10px 25px rgba(0,119,255,0.25); /* Stronger shadow on hover */
+}
+
+.how-it-works h3 {
+    color: var(--dark-blue);
+    font-size: 1.8rem;
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-xs);
+}
+
+.how-it-works p {
+    color: var(--text-medium);
+    max-width: 300px; /* Constrain text width for better readability */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- Service Categories Section --- */
+.service-categories {
+    padding: var(--space-xl) 0;
+    background: var(--bg-light);
+    margin-bottom: var(--space-xl);
+    border-radius: 12px;
+    box-shadow: var(--shadow-light);
+}
+.service-categories h2 {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+    color: var(--dark-blue);
+    font-size: 2.5rem;
+}
+.service-grid {
+    display: flex; /* Ensures Bootstrap columns behave as flex items */
+    flex-wrap: wrap; /* Allows items to wrap to the next line */
+    justify-content: center; /* Centers grid items horizontally if there's extra space */
+}
+
+.service-card {
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow-light);
+    padding: var(--space-lg); /* Initial padding, will be handled by .card-body more precisely */
+    text-align: center;
+    transition: all 0.3s ease;
+    height: 100%; /* Ensures cards in a row have same height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically centers content within the card */
+    align-items: center; /* Horizontally centers content within the card */
+    border: 1px solid var(--border-light); /* Subtle border */
+}
+.service-card:hover {
+    transform: translateY(-8px); /* Lift effect on hover */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15); /* More pronounced shadow on hover */
+    border-color: var(--primary-blue); /* Highlight border on hover */
+}
+
+/* Apply gradient to service-icon-fa within service-card */
+.service-card .service-icon-fa {
+    font-size: 3rem; /* Adjusted for better visual balance within the card */
+    width: 70px; /* Consistent size for icon container */
+    height: 70px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-md);
+    transition: transform 0.3s ease;
+
+    /* Gradient specific properties */
+    background-image: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent; /* Fallback for browsers that don't support text-fill-color */
+}
+
+.service-card:hover .service-icon-fa {
+    transform: scale(1.1); /* Slightly enlarge icon on card hover */
+}
+.service-card h3 {
+    font-size: 1.3rem;
+    color: var(--dark-blue);
+    margin-bottom: 0; /* Remove default margin from h3 inside card */
+    line-height: 1.4;
+}
+
+
+/* --- Footer --- */
+.footer {
+    background: var(--dark-blue);
+    color: rgba(255,255,255,0.8); /* Slightly transparent white for text */
+    text-align: center;
+    padding: var(--space-lg) 0;
+    margin-top: var(--space-xl); /* Space above the footer */
+    font-size: 0.9em;
+    border-top-left-radius: 12px; /* Optional: Rounded top corners for footer */
+    border-top-right-radius: 12px;
+}
+
+/* Footer Styles (Overrides for consistency with new variable system) */
+.footer {
+    background-color: var(--dark-blue) !important; /* Use variable */
+    color: var(--white); /* Use variable */
+    padding: 40px 0;
+}
+
+.footer h5 {
+    color: var(--white); /* Use variable */
+    margin-bottom: 20px;
+}
+
+.footer ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+.footer ul li a {
+    color: var(--text-light) !important; /* Lighter grey for links, using variable */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer ul li a:hover {
+    color: var(--white) !important; /* Use variable */
+}
+
+.footer .fab {
+    font-size: 24px;
+    transition: color 0.3s ease;
+}
+
+.footer .fab:hover {
+    color: var(--primary-blue); /* Use variable */
+}
+
+.footer hr {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer p {
+    font-size: 0.9rem;
+    color: var(--text-light); /* Use variable */
+}
+
+
+/* --- Utility Classes (Good for quick adjustments) --- */
+.text-center { text-align: center; }
+.mb-lg { margin-bottom: var(--space-lg); }
+.mt-lg { margin-top: var(--space-lg); }
+
+
+/* --- Responsive Adjustments (Media Queries) --- */
+
+/* For devices smaller than 992px (e.g., Tablets in Portrait) */
+@media (max-width: 992px) {
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.6rem; }
+
+    .hero-section {
+        min-height: 80vh; /* Adjust height for tablets */
+    }
+    .hero-section h1 { font-size: 2.5rem; } /* Keep hero H1 relatively large */
+    .hero-section h2 { font-size: 2rem; }
+    .hero-section p.lead-text { font-size: 1.1rem; }
+
+    /* Navbar behavior on smaller screens */
+    .navbar-nav {
+        flex-direction: column; /* Stack nav items vertically */
+        align-items: flex-start; /* Align to the left */
+        width: 100%; /* Take full width of collapsed menu */
+        margin-top: var(--space-sm);
+    }
+    .navbar-nav .nav-item {
+        margin-left: 0;
+        margin-bottom: var(--space-xs);
+        width: 100%;
+    }
+    .navbar-nav .nav-link {
+        width: 100%;
+        text-align: left;
+    }
+
+    /* Responsive adjustments for service grid (Bootstrap's col-md-3 will become 50% on medium screens by default, but explicit control is good) */
+    .service-categories .row > div {
+        flex: 0 0 50%; /* Make cols take 50% width on screens <=992px */
+        max-width: 50%;
+    }
+    .service-card {
+        margin-left: auto; /* Ensure cards are centered within their column if the column itself is smaller than card content */
+        margin-right: auto;
+    }
+}
+
+/* For devices smaller than 768px (e.g., Large Phones) */
+@media (max-width: 768px) {
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.8rem; }
+    h3 { font-size: 1.4rem; }
+
+    .hero-section {
+        min-height: 60vh; /* Further reduce height for phones */
+        padding: var(--space-md) var(--space-sm); /* More top/bottom padding, less side padding */
+    }
+    .hero-section h1 { font-size: 2.2rem; }
+    .hero-section h2 { font-size: 1.7rem; }
+    .hero-section p.lead-text { font-size: 1rem; }
+
+    /* Stack hero buttons on smaller screens */
+    .hero-section .button-group {
+        flex-direction: column;
+        gap: var(--space-sm);
+        width: 100%;
+    }
+    .hero-section .button-group .btn {
+        width: 100%; /* Make buttons take full width */
+    }
+
+    /* How It Works section adjustments */
+    .how-it-works .step-item {
+        margin-bottom: var(--space-lg);
+    }
+    .how-it-works .icon-img-fa {
+        width: 90px;
+        height: 90px;
+        font-size: 3.5rem;
+    }
+
+    /* Service grid for mobile: stack vertically */
+    .service-categories .row > div {
+        flex: 0 0 100%; /* Each column takes full width */
+        max-width: 100%;
+    }
+    .service-card {
+        padding: var(--space-md); /* Reduce padding on cards */
+    }
+    .service-card .service-icon-fa { /* Target the service-icon-fa within service-card */
+        font-size: 2.5rem; /* Smaller icons for mobile */
+        width: 60px;
+        height: 60px;
+    }
+}
+
+/* For devices smaller than 480px (e.g., Small Phones) */
+@media (max-width: 480px) {
+    .navbar {
+        padding: var(--space-xs) var(--space-sm);
+    }
+    .navbar-brand { font-size: 1.5rem; }
+
+    .hero-section {
+        min-height: 50vh; /* Even smaller height for tiny screens */
+    }
+    .hero-section h1 { font-size: 1.8rem; }
+    .hero-section h2 { font-size: 1.3rem; }
+    .hero-section p.lead-text { font-size: 0.9rem; }
+
+    .btn-lg { /* Smaller large button on very small screens */
+        padding: 0.8rem 2rem;
+        font-size: 1.1rem;
+    }
+}
