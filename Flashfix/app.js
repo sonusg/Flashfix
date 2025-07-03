@@ -8,7 +8,7 @@ import {
 import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-storage.js";
 
 const firebaseConfig = {
-    //Your database configuration
+     database configuration
 };
 
 
